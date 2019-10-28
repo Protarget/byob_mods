@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+    <id>Protarget:BannerUpload</id>
+    <version>1.0</version>
+    <file name="$sourcedir/Profile.php">
+        <operation>
+            <search position="before"><![CDATA['activateaccount' => array(
+					'file' => 'Profile-Actions.php',
+					'function' => 'activateAccount',
+					'sc' => 'get',
+					'permission' => array(
+						'own' => array(),
+						'any' => array('moderate_forum'),
+					),
+				),]]></search>
+            <add><![CDATA['uploadbanner' => array(
+                'label' => "Upload Banner",
+                'enabled' => $context['user']['is_owner'],
+                'file' => 'Profile-Actions.php',
+                'function' => 'uploadBanner',
+                'permission' => array(
+                    'own' => array('profile_extra_any', 'profile_extra_own'),
+                    'any' => array(),
+                )
+            ),]]>
+            </add>
+        </operation>
+    </file>
+    <file name="$sourcedir/Profile-Actions.php">
+        <operation>
+            <search position="end" />
+            <add><![CDATA[
+
+// Banner Upload
+
+function uploadBanner($memId) {
+    global $txt, $scripturl, $context, $settings, $modSettings, $sourcedir, $smcFunc;
+	$context['page_title'] = 'Upload a banner';
+	$context['sub_template'] = 'upload_banner';
+}    
+
+]]>
+            </add>
+        </operation>
+    </file>
+    <file name="$themedir/Profile.template.php">
+        <operation>
+            <search position="end" />
+            <add><![CDATA[
+
+// Banner Upload Template
+
+function template_upload_banner() {
+    global $context, $settings, $options, $scripturl, $modSettings, $txt;
+    
+    echo '<form action="" method="post" accept-charset="', $context['character_set'], '" name="banner" id="banner" enctype="multipart/form-data" onsubmit="return checkProfileSubmit();">
+    <div class="cat_bar">
+        <h3 class="catbg">
+            <span class="ie6_header floatleft"><img src="', $settings['images_url'], '/icons/profile_sm.gif" alt="" class="icon" />';
+    echo '          Upload Banner';
+    echo '
+            </span>
+        </h3>
+    </div>
+</form>';
+}
+
+]]>
+            </add>
+        </operation>
+    </file>
+</modification>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+    <id>Protarget:BannerUpload</id>
+    <name>Banner Upload</name>
+    <type>modification</type>
+    <version>1.0</version>
+	<install>
+		<modification type="file">BannerUpload.xml</modification>
+		<database>BannerUploadInstall.php</database>	
+	</install>
+	<uninstall>
+		<modification type="file" reverse="true">BannerUpload.xml</modification>
+		<database>BannerUploadUninstall.php</database>
+	</uninstall>
+</package-info>
