@@ -36,9 +36,28 @@
 
 function uploadBanner($memId) {
     global $txt, $scripturl, $context, $settings, $modSettings, $sourcedir, $smcFunc;
-	$context['page_title'] = 'Upload a banner';
+    $MAX_SIZE = 4000000;
+    $context['page_title'] = 'Upload a banner';
 	$context['sub_template'] = 'upload_banner';
-}    
+    $context['got_file'] = 'DEBUG: Uninitialized';
+    if (isset($_POST['u'])) {
+        $context['got_file'] = 'DEBUG: Received POST';
+        if (isset($_FILES['banner_file'])) {
+            $context['got_file'] = 'DEBUG: Received file';
+            if ($_FILES['banner_file']['size'] <= $MAX_SIZE) {
+                require_once($sourcedir . '/Subs-Graphics.php');
+                $context['got_file'] = 'DEBUG: Got file and verified filesize';
+                $sizes = @getimagesize($_FILES['banner_file']['tmp_name']);
+                if ($sizes != false) {
+                    $context['got_file'] = 'DEBUG: Got file and verified as image of dimensions ' . $sizes[0] . ', ' . $sizes[1];
+                }
+            }
+        }
+    }
+    else {
+        $context['got_file'] = 'DEBUG: Receiving';
+    }
+}
 
 ]]>
             </add>
@@ -50,18 +69,39 @@ function uploadBanner($memId) {
             <add><![CDATA[
 
 // Banner Upload Template
-
 function template_upload_banner() {
     global $context, $settings, $options, $scripturl, $modSettings, $txt;
     
-    echo '<form action="" method="post" accept-charset="', $context['character_set'], '" name="banner" id="banner" enctype="multipart/form-data" onsubmit="return checkProfileSubmit();">
+    echo '<form action="', $scripturl, '?action=profile;area=uploadbanner;u=', $context['id_member'], ';sa=upload" method="post" accept-charset="', $context['character_set'], '" name="banner" id="banner" enctype="multipart/form-data">
     <div class="cat_bar">
         <h3 class="catbg">
-            <span class="ie6_header floatleft"><img src="', $settings['images_url'], '/icons/profile_sm.gif" alt="" class="icon" />';
-    echo '          Upload Banner';
-    echo '
+            <span class="ie6_header floatleft"><img src="', $settings['images_url'], '/icons/profile_sm.gif" alt="" class="icon" />
+                Upload Banner (', $context['got_file'], ')
             </span>
         </h3>
+    </div>
+    <div class="windowbg2">
+        <span class="topslice"><span></span></span>
+        <div class="content">
+            <dl>
+                <dt>
+                    <strong>File</strong>
+                    <br>
+                    <span class="smalltext">
+                        Must be an image file less than 4MB
+                    </span>
+                </dt>
+                <dd>
+                    <input type="file" name="banner_file" class="input_file" accept="image/*" />
+                </dd>
+            </dl>
+            <div>
+                <input id="notify_submit" type="submit" value="Upload" class="button_submit" />
+                <input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
+                <input type="hidden" name="u" value="', $context['id_member'], '" />
+            </div>
+            <br class="clear" />
+        </div>
     </div>
 </form>';
 }
