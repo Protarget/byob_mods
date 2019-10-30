@@ -6,6 +6,7 @@
     <type>modification</type>
     <version>1.0</version>
 	<install>
+		<create-dir name="banners" destination="$boarddir" />
 		<modification type="file">BannerUpload.xml</modification>
 		<database>BannerUploadInstall.php</database>	
 	</install>
