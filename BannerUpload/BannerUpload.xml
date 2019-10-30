@@ -244,13 +244,11 @@ if (isset($context['banner_info'])) {
     }
 }
 
-$banner_link = '<a href="' . $boardurl . '">' . $banner_content . "</a>";
+$banner_link = '<a href="' . $scripturl . '">' . $banner_content . "</a>";
 
 echo '<div align="center" style="margin-top:20px;">';
 include("petrotate.php");
-echo '<a href="$boardurl">';
 echo $banner_link;
-echo '</a>';
 include("petrotate2.php");
 echo '</div>';
 
