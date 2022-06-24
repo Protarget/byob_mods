@@ -1,0 +1,28 @@
+<modification>
+	<id>Protarget:HardIgnore</id>
+	<version>1.0.0</version>
+	<file name="$sourcedir/MessageIndex.php">
+		<operation>
+			<search position="before"><![CDATA['can_see_ip' => allowedTo('moderate_forum') || ($message['id_member'] == $user_info['id'] && !empty($user_info['id'])),]]></search>
+			<add><![CDATA[
+				'is_ignored' => !empty($modSettings['enable_buddylist']) && !empty($options['posts_apply_ignore_list']) && in_array($row['first_id_member'], $context['user']['ignoreusers']),]]></add>
+		</operation>
+	</file>
+	<file name="$themedir/Display.template.php">
+		<operation>
+			<search position="before"><![CDATA[$ignoredMsgs[] = $message['id'];]]></search>
+			<add><![CDATA[
+			continue;]]></add>
+		</operation>
+	</file>
+	<file name="$themedir/MessageIndex.template.php">
+		<operation>
+			<search position="before"><![CDATA[foreach ($context['topics'] as $topic)
+		{]]></search>
+			<add><![CDATA[
+						if (!empty($topic['is_ignored'])) {
+								continue;
+						}]]></add>
+		</operation>
+	</file>
+</modification>
