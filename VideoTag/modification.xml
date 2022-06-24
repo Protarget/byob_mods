@@ -1,6 +1,6 @@
 <modification>
 	<id>Protarget:VideoTag</id>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<file name="$sourcedir/Subs-Editor.php">
 		<operation>
 			<search position="before"><![CDATA[array(
@@ -58,10 +58,10 @@
 						// Set the Content (With conditions on disabled types of BBCode)
 						if (isset($disabled[\'url\']) && isset($disabled[\'youtube\']))
 							// Youtube & Url bbc disabled? (eg Printer friendly pages)
-							$tag[\'content\'] = "http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
+							$tag[\'content\'] = "https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
 						elseif(isset($disabled[\'youtube\']))
 							// Only Youtube is disabled, So make an active link
-							$tag[\'content\'] = "<a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
+							$tag[\'content\'] = "<a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
 						else
 						{
 							// Empty content
@@ -70,14 +70,14 @@
 							// Build the <object> (Non-Mac IE Only)
 							//if($context[\'browser\'][\'is_ie\'] && !$context[\'browser\'][\'is_mac_ie\'])
 							//	$tag[\'content\'] = \'<object width="\'.$data[1].\'px" height="\'.$data[2].\'px">\'
-							//		.\'<param name="movie" value="http://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;html5=1" />\'
+							//		.\'<param name="movie" value="https://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;html5=1" />\'
 							//		.\'<param name="wmode" value="transparent" /><param name="allowFullScreen" value="true" />\'
 							//		.\'<param name="allowScriptAccess" value="never" />\';
 							// Build the <embed>
-							$tag[\'content\'] .= \'<iframe src="http://www.youtube.com/embed/\'.$data[0].\'?html5=1" \'
+							$tag[\'content\'] .= \'<iframe src="https://www.youtube.com/embed/\'.$data[0].\'?html5=1" \'
 									.\'frameborder="0" allowfullscreen width="640" height="360"></iframe>\';
 							// Build the <noembed>
-							//$tag[\'content\'] .= "<noembed><a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
+							//$tag[\'content\'] .= "<noembed><a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
 							// Closing <embed>
 							// $tag[\'content\'] .= \'</embed>\';
 							// Close the <object> (Non-Mac IE Only)
@@ -120,10 +120,10 @@
 						// Set the Content (With conditions on disabled types of BBCode)
 						if (isset($disabled[\'url\']) && isset($disabled[\'youtube\']))
 							// Youtube & Url bbc disabled? (eg Printer friendly pages)
-							$tag[\'content\'] = "http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
+							$tag[\'content\'] = "https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
 						elseif(isset($disabled[\'youtube\']))
 							// Only Youtube is disabled, So make an active link
-							$tag[\'content\'] = "<a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
+							$tag[\'content\'] = "<a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
 						else
 						{
 							// Empty content
@@ -132,14 +132,14 @@
 							// Build the <object> (Non-Mac IE Only)
 							//if($context[\'browser\'][\'is_ie\'] && !$context[\'browser\'][\'is_mac_ie\'])
 							//	$tag[\'content\'] = \'<object width="\'.$data[1].\'px" height="\'.$data[2].\'px">\'
-							//		.\'<param name="movie" value="http://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;html5=1" />\'
+							//		.\'<param name="movie" value="https://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;html5=1" />\'
 							//		.\'<param name="wmode" value="transparent" /><param name="allowFullScreen" value="true" />\'
 							//		.\'<param name="allowScriptAccess" value="never" />\';
 							// Build the <embed>
-							$tag[\'content\'] .= \'<iframe src="http://www.youtube.com/embed/\'.$data[0].\'?html5=1" \'
+							$tag[\'content\'] .= \'<iframe src="https://www.youtube.com/embed/\'.$data[0].\'?html5=1" \'
 									.\'frameborder="0" allowfullscreen width="\'.$data[1].\'" height="\'.$data[2].\'"></iframe>\';
 							// Build the <noembed>
-							//$tag[\'content\'] .= "<noembed><a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
+							//$tag[\'content\'] .= "<noembed><a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
 							// Closing <embed>
 							//$tag[\'content\'] .= \'</embed>\';
 							// Close the <object> (Non-Mac IE Only)
@@ -182,10 +182,10 @@
 						// Set the Content (With conditions on disabled types of BBCode)
 						if (isset($disabled[\'url\']) && isset($disabled[\'youtube\']))
 							// Youtube & Url bbc disabled? (eg Printer friendly pages)
-							$tag[\'content\'] = "http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
+							$tag[\'content\'] = "https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
 						elseif(isset($disabled[\'youtube\']))
 							// Only Youtube is disabled, So make an active link
-							$tag[\'content\'] = "<a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
+							$tag[\'content\'] = "<a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
 						else
 						{
 							// Empty content
@@ -194,14 +194,14 @@
 							// Build the <object> (Non-Mac IE Only)
 							// if($context[\'browser\'][\'is_ie\'] && !$context[\'browser\'][\'is_mac_ie\'])
 							//	$tag[\'content\'] = \'<object width="\'.$data[1].\'px" height="\'.$data[2].\'px">\'
-							//		.\'<param name="movie" value="http://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;autoplay=1" />\'
+							//		.\'<param name="movie" value="https://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;autoplay=1" />\'
 							//		.\'<param name="wmode" value="transparent" /><param name="allowFullScreen" value="true" />\'
 							//		.\'<param name="allowScriptAccess" value="never" />\';
 							// Build the <embed>
-							$tag[\'content\'] .= \'<iframe src="http://www.youtube.com/embed/\'.$data[0].\'?html5=1&amp;autoplay=1" \'
+							$tag[\'content\'] .= \'<iframe src="https://www.youtube.com/embed/\'.$data[0].\'?html5=1&amp;autoplay=1" \'
 									.\'frameborder="0" allowfullscreen width="640" height="360"></iframe>\';
 							// Build the <noembed>
-							// $tag[\'content\'] .= "<noembed><a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
+							// $tag[\'content\'] .= "<noembed><a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
 							// Closing <embed>
 							// $tag[\'content\'] .= \'</embed>\';
 							// Close the <object> (Non-Mac IE Only)
@@ -245,10 +245,10 @@
 						// Set the Content (With conditions on disabled types of BBCode)
 						if (isset($disabled[\'url\']) && isset($disabled[\'youtube\']))
 							// Youtube & Url bbc disabled? (eg Printer friendly pages)
-							$tag[\'content\'] = "http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
+							$tag[\'content\'] = "https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0];
 						elseif(isset($disabled[\'youtube\']))
 							// Only Youtube is disabled, So make an active link
-							$tag[\'content\'] = "<a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
+							$tag[\'content\'] = "<a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a>";
 						else
 						{
 							// Empty content
@@ -257,14 +257,14 @@
 							// Build the <object> (Non-Mac IE Only)
 							//if($context[\'browser\'][\'is_ie\'] && !$context[\'browser\'][\'is_mac_ie\'])
 							//	$tag[\'content\'] = \'<object width="\'.$data[1].\'px" height="\'.$data[2].\'px">\'
-							//		.\'<param name="movie" value="http://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;autoplay=1" />\'
+							//		.\'<param name="movie" value="https://www.youtube.com/\'.($type ? "v" : "p").\'/\'.$data[0].\'&amp;rel=1&amp;fs=1&amp;autoplay=1" />\'
 							//		.\'<param name="wmode" value="transparent" /><param name="allowFullScreen" value="true" />\'
 							//		.\'<param name="allowScriptAccess" value="never" />\';
 							// Build the <embed>
-							$tag[\'content\'] .= \'<iframe src="http://www.youtube.com/embed/\'.$data[0].\'?html5=1&amp;autoplay=1" \'
+							$tag[\'content\'] .= \'<iframe src="https://www.youtube.com/embed/\'.$data[0].\'?html5=1&amp;autoplay=1" \'
 									.\'frameborder="0" allowfullscreen width="\'.$data[1].\'" height="\'.$data[2].\'"></iframe>\';
 							// Build the <noembed>
-							//$tag[\'content\'] .= "<noembed><a href=\"http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">http://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
+							//$tag[\'content\'] .= "<noembed><a href=\"https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p" ) ."=". $data[0]."\" target=\"_blank\">https://". $site ."youtube.com/". ($type ? "watch?v" : "view_play_list?p") ."=". $data[0]."</a></noembed>";
 							// Closing <embed>
 							//$tag[\'content\'] .= \'</embed>\';
 							// Close the <object> (Non-Mac IE Only)
