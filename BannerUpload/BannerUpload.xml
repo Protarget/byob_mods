@@ -2,13 +2,16 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
     <id>Protarget:BannerUpload</id>
-    <version>1.0</version>
+    <version>1.0.1</version>
     <file name="$sourcedir/Profile.php">
         <operation>
             <search position="before"><![CDATA['activateaccount' => array(
 					'file' => 'Profile-Actions.php',
 					'function' => 'activateAccount',
+					'icon' => 'regcenter',
 					'sc' => 'get',
+					'token' => 'profile-aa%u',
+					'token_type' => 'get',
 					'permission' => array(
 						'own' => array(),
 						'any' => array('moderate_forum'),
@@ -223,7 +226,9 @@ function selectBanner() {
     </file>
     <file name="$themedir/index.template.php">
         <operation>
-            <search position="after"><![CDATA[// Custom banners and shoutboxes should be placed here, before the linktree.]]></search>
+            <search position="before"><![CDATA[echo '
+		</div><!-- .inner_wrap -->
+	</div><!-- #top_section -->';]]></search>
             <add><![CDATA[
 
 $banner_member_name = 'Unknown';
@@ -247,9 +252,9 @@ if (isset($context['banner_info'])) {
 $banner_link = '<a href="' . $scripturl . '">' . $banner_content . "</a>";
 
 echo '<div align="center" style="margin-top:20px;">';
-include("petrotate.php");
+include("/var/www/html/petrotate.php");
 echo $banner_link;
-include("petrotate2.php");
+include("/var/www/html/petrotate2.php");
 echo '</div>';
 
 ]]>
